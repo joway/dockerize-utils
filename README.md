@@ -1,6 +1,6 @@
 # dockerize-utils
 
-Put some helpful utils(like `curl`, `dig`, `ab`, `httpie`) into kubernetes or other platform.
+Put some helpful utils(`curl`, `dig`, `ab`, `httpie`, etc) into kubernetes or other platform.
 
 ### Deploy
 
