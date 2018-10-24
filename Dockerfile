@@ -6,6 +6,9 @@ RUN apt update \
       dnsutils apache2-utils httpie \
     && apt-get clean
 
+WORKDIR /app
+COPY ./ ./
+
 EXPOSE 8080
 
-CMD ["python -m SimpleHTTPServer 8080"]
+CMD ["./start.sh"]

@@ -2,10 +2,18 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: kube-utils
+  labels:
+    app: kube-utils
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: kube-utils
   template:
     metadata:
+      labels:
+        app: kube-utils
+    spec:
       containers:
-      - image: joway/dockerize-utils:latest
+      - image: joway/dockerize-utils:83e0c01
         name: kube-utils
