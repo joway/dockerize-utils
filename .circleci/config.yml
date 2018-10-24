@@ -35,8 +35,9 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-              docker tag app "dockerize-utils:${CIRCLE_SHA1}"
-              docker push "joway/dockerize-utils:${CIRCLE_SHA1}"
+              export GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)
+              docker tag app "joway/dockerize-utils:${GIT_HASH}"
+              docker push "joway/dockerize-utils:${GIT_HASH}"
             fi
 
 workflows:
