@@ -1,6 +1,7 @@
 version: 2
 jobs:
   build:
+    context: docker
     working_directory: /app
     docker:
       - image: docker:17.05.0-ce-git
@@ -34,8 +35,13 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              echo ${DOCKER_USER}
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
               docker tag app "dockerize-utils:${CIRCLE_SHA1}"
               docker push "dockerize-utils:${CIRCLE_SHA1}"
             fi
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
