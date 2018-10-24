@@ -42,8 +42,10 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
               export GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)
-              docker tag app "joway/dockerize-utils:${GIT_HASH}"
+              export FULL_IMAGE="joway/dockerize-utils:${GIT_HASH}"
+              echo "docker pushing ${FULL_IMAGE}..."
+              docker tag app ${FULL_IMAGE}"
               docker tag app "joway/dockerize-utils:latest"
-              docker push "joway/dockerize-utils:${GIT_HASH}"
+              docker push ${FULL_IMAGE}
               docker push "joway/dockerize-utils:latest"
             fi
