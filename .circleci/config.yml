@@ -34,8 +34,8 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              login="$(docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD})"
-              ${login}
+              echo ${DOCKER_USER}
+              docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
               docker tag app "dockerize-utils:${CIRCLE_SHA1}"
               docker push "dockerize-utils:${CIRCLE_SHA1}"
             fi
