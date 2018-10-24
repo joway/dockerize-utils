@@ -46,7 +46,7 @@ jobs:
               echo "docker logining ..."
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
 
-              echo 'docker pushing ${IMAGE_NAME}:${IMAGE_TAG} ...'
+              echo "docker pushing ${IMAGE_NAME}:${IMAGE_TAG} ..."
               docker tag app ${IMAGE_NAME}:${IMAGE_TAG}
               docker tag app ${IMAGE_NAME}:latest
               docker push ${IMAGE_NAME}:${IMAGE_TAG}
