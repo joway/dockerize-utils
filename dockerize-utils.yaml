@@ -15,5 +15,5 @@ spec:
         app: kube-utils
     spec:
       containers:
-      - image: joway/dockerize-utils:4e4b695
+      - image: joway/dockerize-utils:24a6ae9
         name: kube-utils
