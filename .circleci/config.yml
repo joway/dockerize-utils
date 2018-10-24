@@ -3,10 +3,10 @@ workflows:
   version: 2
   build-deploy:
     jobs:
-      - build:
+      - docker-build-and-push:
           context: docker
 jobs:
-  build:
+  docker-build-and-push:
     working_directory: /app
     docker:
       - image: docker:17.05.0-ce-git
