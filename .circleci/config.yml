@@ -40,12 +40,17 @@ jobs:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              export IMAGE_NAME=joway/dockerize-utils
+              export IMAGE_TAG=$(echo $CIRCLE_SHA1 | cut -c -7)
+
+              echo "docker logining ..."
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-              export GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)
-              export FULL_IMAGE="joway/dockerize-utils:${GIT_HASH}"
-              echo "docker pushing ${FULL_IMAGE}..."
-              docker tag app ${FULL_IMAGE}"
-              docker tag app "joway/dockerize-utils:latest"
-              docker push ${FULL_IMAGE}
-              docker push "joway/dockerize-utils:latest"
+
+              echo 'docker pushing ${IMAGE_NAME}:${IMAGE_TAG} ...'
+              docker tag app ${IMAGE_NAME}:${IMAGE_TAG}
+              docker tag app ${IMAGE_NAME}:latest
+              docker push ${IMAGE_NAME}:${IMAGE_TAG}
+              docker push ${IMAGE_NAME}:latest
+
+              echo "docker push success!"
             fi
