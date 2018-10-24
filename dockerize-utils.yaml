@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kube-utils
+spec:
+  replicas: 1
+  template:
+    metadata:
+      containers:
+      - image: joway/dockerize-utils:latest
+        name: kube-utils
