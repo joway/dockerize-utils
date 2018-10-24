@@ -7,7 +7,7 @@ Put some helpful utils(`curl`, `dig`, `ab`, `httpie`, etc) into kubernetes or ot
 ### Deploy
 
 ```
-kubectl create -f https://github.com/joway/dockerize-utils/blob/master/dockerize-utils.yaml
+kubectl create -f https://raw.githubusercontent.com/joway/dockerize-utils/master/dockerize-utils.yaml
 ```
 
 ### Usage
