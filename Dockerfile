@@ -8,7 +8,7 @@ RUN apt update \
   && apt-get clean
 
 RUN curl -o /opt/kafka.tgz http://apache.website-solution.net/kafka/2.0.0/kafka_2.12-2.0.0.tgz \
-  && cd /opt && tar -xvzf /tmp/kafka.tgz --strip 1
+  && cd /opt && tar -xvzf /tmp/kafka.tgz --strip 1 && rm ./kafka.tgz
 
 WORKDIR /app
 COPY ./ ./
